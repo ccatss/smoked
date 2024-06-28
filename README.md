@@ -9,7 +9,6 @@ Features
 - Fast (all compiled code)
 - Smaller (no node runtime, only an alpine image)
 - Built-in file serving
-- 
 
 Upcoming Features
 ----------
