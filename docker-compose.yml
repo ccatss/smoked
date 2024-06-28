@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  caramel:
+    image: ghcr.io/ccatss/smoked:main
+    restart: always
+    hostname: looking-glass
+    user: "0:0" # if not using bird can remove
+    network_mode: host # ipv6 support due to docker networking
+    volumes:
+      - /run/bird/bird.ctl:/var/run/bird.ctl # if not using bird can remove
+      - /path/to/files:/data/files # remove if not using file serving
+    environment:
+      - CORS_ORIGIN=https://lg.example.com # set to your domain
+      - FEATURE_BGP=true # enable bgp queries
+      - FEATURE_PING=true # enable ping
+      - FEATURE_PING_COUNT=5 # modify ping count
+      - FEATURE_TRACEROUTE=true # enable trace
+      - FEATURE_MTR=true # enable mtr
+      - FEATURE_FILES=true # enable file serving/tests
+      - FEATURE_FILES_PATH=/data/files # change as necessary
